@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/17 14:47:10 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:49:04 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 16:02:05 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef char		*(*t_spec_func)(va_list);
 
 typedef struct		s_core
 {
+	int				fd;
 	char			cspec;
 	int				negprec;
 	int				format_len;
@@ -67,13 +68,15 @@ typedef struct		s_dispatch2
 
 int			ft_printf(const char *format, ...);
 
+int			ft_dprintf(int fd, const char *format, ...);
+
 /*
 ** UTILS
 */
 t_flag		*build_flag(const char *format, t_core *core
 							, char type, va_list args);
 
-t_core		*build_core(void);
+t_core		*build_core(int fd);
 
 void		lstadd_flag_back(t_flag **head, t_flag *flag);
 

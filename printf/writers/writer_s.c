@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 09:51:46 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:50:46 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 16:00:32 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	write_width_s(t_core *core, char *str)
 	core->string_len += len;
 	while (len)
 	{
-		pf_ft_putchar_fd(chpad, 1);
+		pf_ft_putchar_fd(chpad, core->fd);
 		len--;
 	}
 	return (1);
@@ -71,7 +71,7 @@ static int	write_spec_s(t_core *core, char *str)
 		len = precision->param;
 	while (len && *s)
 	{
-		pf_ft_putchar_fd(*s, 1);
+		pf_ft_putchar_fd(*s, core->fd);
 		core->string_len++;
 		len--;
 		s++;

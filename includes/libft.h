@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/18 16:46:09 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:38:41 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 16:20:12 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,11 @@ void				*ft_memmove(void *s1, const void *s2, size_t n);
 void				*ft_memccpy(void *s1, const void *s2, int c, size_t n);
 
 void				*ft_calloc(size_t nmemb, size_t size);
+
+/* newly added functions */
+
+int					str_arr_exists(char **arr, char *str);
+
+void				str_arr_free(char **str);
 
 #endif

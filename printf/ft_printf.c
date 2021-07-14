@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/15 15:56:03 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:51:30 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 15:53:53 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static int	resolve_format(const char *format, t_core *core, va_list args,
 	}
 	else
 	{
-		ret = pf_ft_putchar_fd(format[*idx], 1);
+		ret = pf_ft_putchar_fd(format[*idx], core->fd);
 		if (ret == -1)
 			return (ret);
 		core->string_len++;
@@ -117,13 +117,13 @@ static int	resolve_format(const char *format, t_core *core, va_list args,
 **	@RETURN	{int} length
 */
 
-static int	real_printf(const char *format, va_list args)
+static int	real_printf(int fd, const char *format, va_list args)
 {
 	t_core		*core;
 	ssize_t		ret;
 	int			idx;
 
-	core = build_core();
+	core = build_core(fd);
 	if (!core)
 		return (-1);
 	idx = 0;
@@ -136,7 +136,7 @@ static int	real_printf(const char *format, va_list args)
 		}
 		else
 		{
-			ret = pf_ft_putchar_fd(format[idx], 1);
+			ret = pf_ft_putchar_fd(format[idx], fd);
 			if (ret == -1)
 				return (-1);
 		}
@@ -161,7 +161,18 @@ int			ft_printf(const char *format, ...)
 	int			len;
 
 	va_start(args, format);
-	len = real_printf(format, args);
+	len = real_printf(STDOUT_FILENO, format, args);
+	va_end(args);
+	return (len);
+}
+
+int			ft_dprintf(int fd, const char *format, ...)
+{
+	va_list		args;
+	int			len;
+
+	va_start(args, format);
+	len = real_printf(fd, format, args);
 	va_end(args);
 	return (len);
 }

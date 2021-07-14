@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 10:57:36 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:49:44 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 15:50:59 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,13 +134,14 @@ static t_spec_func	*build_spec_func_arr(void)
 **	@RETURN	{t_core*} core
 */
 
-t_core				*build_core(void)
+t_core				*build_core(int fd)
 {
 	t_core	*core;
 
 	core = malloc(sizeof(t_core));
 	if (!core)
 		return (NULL);
+	core->fd = fd;
 	core->cspec = 0;
 	core->negprec = 0;
 	core->format_len = 0;

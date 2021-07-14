@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 10:18:24 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:50:42 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/07/14 16:00:09 by jessevander   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	write_width_p(t_core *core, char *str)
 	core->string_len += len;
 	while (len)
 	{
-		pf_ft_putchar_fd(chpad, 1);
+		pf_ft_putchar_fd(chpad, core->fd);
 		len--;
 	}
 	return (1);
@@ -57,7 +57,7 @@ static int	write_width_p(t_core *core, char *str)
 static int	write_prefix_p(t_core *core, char *str)
 {
 	(void)str;
-	pf_ft_putstr_fd("0x", 1);
+	pf_ft_putstr_fd("0x", core->fd);
 	core->string_len += 2;
 	return (1);
 }
@@ -83,13 +83,13 @@ static int	write_spec_p(t_core *core, char *str)
 		core->string_len += len;
 		while (len)
 		{
-			pf_ft_putchar_fd('0', 1);
+			pf_ft_putchar_fd('0', core->fd);
 			len--;
 		}
 	}
 	if (!(is_zero_edge(core, str)))
 	{
-		pf_ft_putstr_fd(str, 1);
+		pf_ft_putstr_fd(str, core->fd);
 		core->string_len += pf_ft_strlen(str);
 	}
 	return (1);

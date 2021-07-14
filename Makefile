@@ -6,7 +6,7 @@
 #    By: jevan-de <jevan-de@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/23 16:04:57 by jevan-de      #+#    #+#                  #
-#    Updated: 2020/07/17 14:49:20 by jevan-de      ########   odam.nl          #
+#    Updated: 2021/07/14 16:20:32 by jessevander   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,9 @@ SRC =			ft_atof.c \
 				ft_lstsize.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
-				ft_lstmap.c
+				ft_lstmap.c \
+				str_arr_free.c \
+				str_arr_exists.c
 
 PRINTF_OBJ =	$(addprefix $(PRINTF_SRCDIR), $(PRINTF_SRC:.c=.o))
 
