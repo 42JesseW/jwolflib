@@ -91,7 +91,7 @@ static char	**split_elems(char **arr, char const *s, char c)
 	return (arr);
 }
 
-char		**ft_split(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	int		elems;

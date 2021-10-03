@@ -1,17 +1,19 @@
-#include <libft.h>
+#include "../includes/libft.h"
 
-void		str_arr_free(char **str)
+void		ft_strarrfree(char ***str)
 {
-	int	idx;
+	char	**p;
+	int		idx;
 
-	if (!str)
+	if (!(*str))
 		return ;
 	idx = 0;
-	while (str[idx] != NULL)
+	p = *str;
+	while (p[idx] != NULL)
 	{
-		free((void *)str[idx]);
+		free((void *)p[idx]);
 		idx++;
 	}
-	free(str);
+	free(p);
+	*str = NULL;
 }
-

@@ -88,7 +88,7 @@ char				*ft_itoa(int n);
 
 void				ft_bzero(void *s, size_t n);
 
-char				**ft_split(char const *s, char c);
+char				**ft_strsplit(char const *s, char c);
 
 int					ft_isdigit(int c);
 
@@ -126,8 +126,8 @@ void				*ft_calloc(size_t nmemb, size_t size);
 
 /* newly added functions */
 
-int					str_arr_exists(char **arr, char *str);
+int					ft_strarrexists(char **arr, char *str);
 
-void				str_arr_free(char **str);
+void				ft_strarrfree(char ***str);
 
 #endif

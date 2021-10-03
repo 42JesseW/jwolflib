@@ -86,14 +86,20 @@ SRC =			ft_atof.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
 				ft_lstmap.c \
-				str_arr_free.c \
-				str_arr_exists.c
+				ft_strarrfree.c \
+				ft_strarrexists.c
 
 PRINTF_OBJ =	$(addprefix $(PRINTF_SRCDIR), $(PRINTF_SRC:.c=.o))
 
 GNL_OBJ =		$(addprefix $(GNL_SRCDIR), $(GNL_SRC:.c=.o))
 
 SRC_OBJ =		$(addprefix $(SRCDIR), $(SRC:.c=.o))
+
+TEST =			tests
+
+TEST_SRC =		test_stringmanip.c
+
+TEST_OBJ =		$(addprefix $(TEST)/bin/, $(TEST_SRC:.c=.o))
 
 UNAME_S =		$(shell uname -s)
 
@@ -127,12 +133,22 @@ $(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 
 clean:
 	@echo "$(R)Cleaning up OBJ files... $(W)"
-	@rm -vf $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
+	@rm -vf $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(TEST_OBJ)
 
 fclean: clean
 	@echo "$(R)Cleaning up $(NAME)... $(W)"
-	@rm -vf $(NAME)
+	@rm -vf $(NAME) test
 
 re: fclean all
+
+$(TEST)/bin:
+	@echo "$(B)Creating $(TEST)/bin because not created yet"
+	@mkdir -p $@
+
+$(TEST)/bin/%.o: $(TEST)/%.c
+	@$(CC) $(CFLAGS) $< $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) -o $@ -lcriterion
+
+test: $(NAME) $(TEST)/bin $(TEST_OBJ)
+	for test in $(TEST_OBJ) ; do ./$$test ; done
 
 .PHONY: fclean clean re
