@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/16 16:38:33 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:39:20 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:22:00 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	char		*s;
 	size_t		nleft;

@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 21:32:12 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:39:02 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:21:40 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static char	**split_elems(char **arr, char const *s, char c)
 	return (arr);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	int		elems;

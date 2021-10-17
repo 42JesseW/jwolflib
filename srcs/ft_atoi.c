@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 13:57:17 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:35:35 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:20:43 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static size_t	find_ltrim(char const *s1, char const *set)
 	return (idx);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	value;
 	int	sign;

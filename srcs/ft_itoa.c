@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 23:48:58 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:36:21 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:21:05 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static char		*ft_strrev(char *s)
+static char	*ft_strrev(char *s)
 {
 	int		i;
 	int		j;
@@ -31,7 +31,7 @@ static char		*ft_strrev(char *s)
 	return (s);
 }
 
-static int		count_digits(int n)
+static int	count_digits(int n)
 {
 	int count;
 
@@ -46,7 +46,7 @@ static int		count_digits(int n)
 	return (count);
 }
 
-static char		*calc_string(char *str, int n, int sign)
+static char	*calc_string(char *str, int n, int sign)
 {
 	int		idx;
 
@@ -70,7 +70,7 @@ static char		*calc_string(char *str, int n, int sign)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		sign;

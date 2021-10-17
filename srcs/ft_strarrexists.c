@@ -1,7 +1,7 @@
 #include "../includes/libft.h"
 #include "../includes/printf.h"
 
-int		ft_strarrexists(char **arr, char *str)
+int	ft_strarrexists(char **arr, char *str)
 {
 	int 	idx;
 

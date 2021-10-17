@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 13:49:47 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:39:31 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:22:07 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			idx;
 	unsigned char	*ps1;

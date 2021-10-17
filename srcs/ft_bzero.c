@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/15 17:01:25 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:35:53 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:24:12 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *p;
+	unsigned char	*p;
 
 	p = s;
 	while (n > 0)

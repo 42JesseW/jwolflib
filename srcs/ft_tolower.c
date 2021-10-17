@@ -6,11 +6,11 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 14:43:52 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:40:04 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:22:16 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if ((c >= 'A') && (c <= 'Z'))
 		return (c + 32);

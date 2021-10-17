@@ -1,6 +1,6 @@
 #include "../includes/libft.h"
 
-void		ft_strarrfree(char ***str)
+void	ft_strarrfree(char ***str)
 {
 	char	**p;
 	int		idx;
