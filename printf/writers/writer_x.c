@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 13:12:02 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:01:46 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:02:34 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	write_prefix_x(t_core *core, char *str)
 
 	prefix = NULL;
 	if (lstget_flag(core->head, '#') && ft_strcmp(str, "0") != 0)
-		prefix = (core->cspec == 'x') ? "0x" : "0X";
+		prefix = ft_ternary_charp(core->cspec == 'x', "0x", "0X");
 	if (prefix)
 	{
 		pf_ft_putstr_fd(prefix, core->fd);
@@ -111,7 +111,7 @@ static int	write_spec_x(t_core *core, char *str)
 **	@RETURN	{int} length
 */
 
-int			write_format_x(t_core *core, va_list args)
+int	write_format_x(t_core *core, va_list args)
 {
 	int		ret;
 	char	*str;
@@ -121,16 +121,16 @@ int			write_format_x(t_core *core, va_list args)
 		return (-1);
 	if (lstget_flag(core->head, '-'))
 		ret = write_format_disp3((t_dispatch3){
-			&write_prefix_x, &write_spec_x, &write_width_x}, core, str);
+				&write_prefix_x, &write_spec_x, &write_width_x}, core, str);
 	else
 	{
 		if (lstget_flag(core->head, '0'))
 			ret = write_format_disp3((t_dispatch3){
-				&write_prefix_x, &write_width_x, &write_spec_x}, core, str);
+					&write_prefix_x, &write_width_x, &write_spec_x}, core, str);
 		else
 			ret = write_format_disp3((t_dispatch3){
-				&write_width_x, &write_prefix_x, &write_spec_x}, core, str);
+					&write_width_x, &write_prefix_x, &write_spec_x}, core, str);
 	}
 	free(str);
-	return ((ret != 0) ? core->format_len : -1);
+	return (ft_ternary_int(ret != 0, core->format_len, -1));
 }

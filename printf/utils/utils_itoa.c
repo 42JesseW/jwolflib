@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/12 15:32:54 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:49:51 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 15:28:09 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*calc_string(char *str, int n, int sign, int base)
 	{
 		while (n > 0)
 		{
-			str[idx] = n % base + ((n % base > 9) ? '0' + 39 : '0');
+			str[idx] = n % base + ft_ternary_int((n % base > 9), '0' + 39, '0');
 			n /= base;
 			idx++;
 		}
@@ -36,12 +36,14 @@ static char	*calc_string(char *str, int n, int sign, int base)
 	return (str);
 }
 
-char		*ft_itoa_base(int n, int base)
+char	*ft_itoa_base(int n, int base)
 {
 	char	*str;
 	int		sign;
 
-	sign = (n < 0) ? 1 : 0;
+	sign = 0;
+	if (n < 0)
+		sign = 1;
 	if (n < 0 || n == -0)
 	{
 		if (n == INT_MIN)
@@ -55,7 +57,7 @@ char		*ft_itoa_base(int n, int base)
 	return (ft_strrev(str));
 }
 
-char		*ft_itoa_u_base(uintptr_t n, unsigned long base, int capitalized)
+char	*ft_itoa_u_base(uintptr_t n, unsigned long base, int capitalized)
 {
 	char	*str;
 	int		diff;
@@ -65,7 +67,7 @@ char		*ft_itoa_u_base(uintptr_t n, unsigned long base, int capitalized)
 	if (!str)
 		return (str);
 	idx = 0;
-	diff = (capitalized) ? 7 : 39;
+	diff = ft_ternary_int(capitalized, 7, 39);
 	if (n == 0)
 	{
 		str[idx] = '0';
@@ -75,7 +77,8 @@ char		*ft_itoa_u_base(uintptr_t n, unsigned long base, int capitalized)
 	{
 		while (n > 0)
 		{
-			str[idx] = n % base + ((n % base > 9) ? '0' + diff : '0');
+			str[idx] = n % base + ft_ternary_int(
+					(n % base > 9), '0' + diff, '0');
 			n /= base;
 			idx++;
 		}

@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 11:30:18 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:49:55 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 15:26:11 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 
-int			lstreset_core(t_core *core, int type)
+int	lstreset_core(t_core *core, int type)
 {
 	t_flag	*cur;
 	t_flag	*prev;
@@ -50,7 +50,7 @@ int			lstreset_core(t_core *core, int type)
 **	@RETURN	{t_flag*} flag
 */
 
-t_flag		*lstget_flag(t_flag *head, char type)
+t_flag	*lstget_flag(t_flag *head, char type)
 {
 	t_flag	*cur;
 
@@ -81,7 +81,7 @@ static int	lstoveride_flag(t_flag *head, t_flag *new)
 	type = new->type;
 	if (type == '-' || type == '+')
 	{
-		flag = lstget_flag(head, (type == '-') ? '0' : ' ');
+		flag = lstget_flag(head, ft_ternary_int((type == '-'), '0', ' '));
 		if (flag)
 		{
 			flag->type = type;
@@ -91,7 +91,7 @@ static int	lstoveride_flag(t_flag *head, t_flag *new)
 	}
 	if (type == '0' || type == ' ')
 	{
-		if (lstget_flag(head, (type == '0') ? '-' : '+'))
+		if (lstget_flag(head, ft_ternary_int((type == '0'), '-', '+')))
 		{
 			free(new);
 			return (1);
@@ -109,7 +109,7 @@ static int	lstoveride_flag(t_flag *head, t_flag *new)
 **	@RETURN
 */
 
-void		lstadd_flag_back(t_flag **head, t_flag *flag)
+void	lstadd_flag_back(t_flag **head, t_flag *flag)
 {
 	t_flag	*cur;
 

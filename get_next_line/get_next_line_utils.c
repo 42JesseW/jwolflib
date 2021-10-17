@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/24 10:40:36 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:41:37 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:48:17 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ size_t	gnl_ft_strlcpy(char *dst, const char *src, size_t size)
 
 	if (src == NULL || dst == NULL)
 		return (0);
-	s = (char*)src;
+	s = (char *)src;
 	nleft = size;
 	if (nleft != 0)
 	{

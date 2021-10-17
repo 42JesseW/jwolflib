@@ -6,7 +6,7 @@
 #    By: jevan-de <jevan-de@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/04/23 16:04:57 by jevan-de      #+#    #+#                  #
-#    Updated: 2021/07/14 16:20:32 by jessevander   ########   odam.nl          #
+#    Updated: 2021/10/17 15:33:53 by jevan-de      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ PRINTF_SRC =	utils/utils.c \
 				writers/writer_s.c \
 				writers/writer_u.c \
 				writers/writer_x.c \
+				real_printf.c \
+				ft_dprintf.c \
 				ft_printf.c
 
 GNL_SRC =		get_next_line.c \
@@ -86,6 +88,8 @@ SRC =			ft_atof.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
 				ft_lstmap.c \
+				ft_ternary_int.c \
+				ft_ternary_charp.c \
 				ft_strarrfree.c \
 				ft_strarrexists.c
 

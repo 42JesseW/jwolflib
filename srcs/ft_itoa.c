@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 23:48:58 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/10/17 14:21:05 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:34:53 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ static char	*ft_strrev(char *s)
 
 static int	count_digits(int n)
 {
-	int count;
+	int	count;
 
 	count = 1;
 	if (n < 0)
-		n = (n == INT_MIN) ? INT_MAX : -n;
+	{
+		if (n == INT_MIN)
+			n = INT_MAX;
+		else
+			n = -n;
+	}
 	while (n > 9)
 	{
 		n /= 10;
@@ -75,7 +80,9 @@ char	*ft_itoa(int n)
 	char	*str;
 	int		sign;
 
-	sign = (n < 0) ? 1 : 0;
+	sign = 0;
+	if (n < 0)
+		sign = 1;
 	if (n < 0 || n == -0)
 	{
 		if (n == INT_MIN)

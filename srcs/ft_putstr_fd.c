@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/18 14:38:08 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:38:59 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:36:28 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int index;
+	int	index;
 
 	if (s == NULL)
 		return ;

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strarrexists.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/10/17 14:37:34 by jevan-de      #+#    #+#                 */
+/*   Updated: 2021/10/17 14:37:38 by jevan-de      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft.h"
 #include "../includes/printf.h"
 
 int	ft_strarrexists(char **arr, char *str)
 {
-	int 	idx;
+	int	idx;
 
 	if (!arr || !(*arr) || !str)
 		return (0);

@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_ternary_charp.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/06/15 15:56:03 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/10/17 15:33:17 by jevan-de      ########   odam.nl         */
+/*   Created: 2021/10/17 14:58:19 by jevan-de      #+#    #+#                 */
+/*   Updated: 2021/10/17 14:59:31 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "../includes/libft.h"
 
-/*
-** Wrapper for real_printf initializing variadic args
-**
-**  @ARG    {const char*} format
-**  @ARG	{...}
-**
-**	@RETURN	{int} length
-*/
-
-int	ft_printf(const char *format, ...)
+char	*ft_ternary_charp(int condition, char *a, char *b)
 {
-	va_list		args;
-	int			len;
-
-	va_start(args, format);
-	len = real_printf(STDOUT_FILENO, format, args);
-	va_end(args);
-	return (len);
+	if (condition)
+		return (a);
+	return (b);
 }

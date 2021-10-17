@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 21:32:12 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/10/17 14:21:40 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:37:07 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	**ft_strsplit(char const *s, char c)
 	else
 	{
 		elems = count_elems(s, c);
-		split = malloc(sizeof(char*) * elems);
+		split = malloc(sizeof(char *) * elems);
 		if (split == NULL)
 			return (NULL);
 		else
@@ -111,5 +111,7 @@ char	**ft_strsplit(char const *s, char c)
 			split -= (elems - 1);
 		}
 	}
-	return ((is_valid_split(split, elems)) ? split : clear_arr(split, elems));
+	if (is_valid_split(split, elems))
+		return (split);
+	return (clear_arr(split, elems));
 }

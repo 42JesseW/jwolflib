@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 13:57:17 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/10/17 14:23:35 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:47:14 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ static size_t	find_ltrim(char const *s1, char const *set)
 	return (idx);
 }
 
+static double	loop_left(const char *str, int *idx)
+{
+	double	num;
+
+	num = 0;
+	while (ft_isdigit(str[*idx]))
+	{
+		num = (num * 10.) + (str[*idx] - '0');
+		(*idx)++;
+	}
+	return (num);
+}
+
 double	ft_atof(const char *str)
 {
 	double	num;
@@ -46,7 +59,6 @@ double	ft_atof(const char *str)
 	int		sign;
 	int		idx;
 
-	num = 0;
 	sign = 1;
 	idx = 0 + find_ltrim(str, "\a\t\b \v\n\r\f");
 	if (str[idx] == '-' || str[idx] == '+')
@@ -55,11 +67,7 @@ double	ft_atof(const char *str)
 			sign = -1;
 		idx++;
 	}
-	while (ft_isdigit(str[idx]))
-	{
-		num = (num * 10.) + (str[idx] - '0');
-		idx++;
-	}
+	num = loop_left(str, &idx);
 	if (str[idx] == '.')
 		idx++;
 	decplace = 1.;

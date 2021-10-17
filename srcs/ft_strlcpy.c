@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/16 16:38:33 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/10/17 14:22:00 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:38:06 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	if (src == NULL || dst == NULL)
 		return (0);
-	s = (char*)src;
+	s = (char *)src;
 	nleft = size;
 	if (nleft != 0)
 	{

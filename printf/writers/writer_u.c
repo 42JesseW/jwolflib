@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 12:44:28 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:01:03 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:03:20 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	write_spec_u(t_core *core, char *str)
 **	@RETURN	{int} length
 */
 
-int			write_format_u(t_core *core, va_list args)
+int	write_format_u(t_core *core, va_list args)
 {
 	int		ret;
 	char	*str;
@@ -97,16 +97,16 @@ int			write_format_u(t_core *core, va_list args)
 		return (-1);
 	if (lstget_flag(core->head, '-'))
 		ret = write_format_disp2((t_dispatch2){
-			&write_spec_u, &write_width_u}, core, str);
+				&write_spec_u, &write_width_u}, core, str);
 	else
 	{
 		if (lstget_flag(core->head, '0'))
 			ret = write_format_disp2((t_dispatch2){
-				&write_width_u, &write_spec_u}, core, str);
+					&write_width_u, &write_spec_u}, core, str);
 		else
 			ret = write_format_disp2((t_dispatch2){
-				&write_width_u, &write_spec_u}, core, str);
+					&write_width_u, &write_spec_u}, core, str);
 	}
 	free(str);
-	return ((ret != 0) ? core->format_len : -1);
+	return (ft_ternary_int(ret != 0, core->format_len, -1));
 }

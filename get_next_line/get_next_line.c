@@ -6,11 +6,12 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/24 10:40:29 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:41:42 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:52:03 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
+#include "../includes/libft.h"
 
 t_gnl_lst	*get_gnl_lst(t_gnl_lst **head, int fd)
 {
@@ -40,7 +41,7 @@ t_gnl_lst	*get_gnl_lst(t_gnl_lst **head, int fd)
 	return (new);
 }
 
-int			cleanup_get_next_line(t_gnl_lst **head, t_gnl_lst *lst, char **line)
+int	cleanup_get_next_line(t_gnl_lst **head, t_gnl_lst *lst, char **line)
 {
 	t_gnl_lst	*cur;
 	t_gnl_lst	*prev;
@@ -66,10 +67,10 @@ int			cleanup_get_next_line(t_gnl_lst **head, t_gnl_lst *lst, char **line)
 			*head = (*head)->next;
 		free(cur);
 	}
-	return ((line == NULL || *line == NULL) ? -1 : 0);
+	return (ft_ternary_int((line == NULL || *line == NULL), -1, 0));
 }
 
-int			find_line_end(t_gnl_lst **head, t_gnl_lst *lst, char **line)
+int	find_line_end(t_gnl_lst **head, t_gnl_lst *lst, char **line)
 {
 	char	*ptr;
 
@@ -86,7 +87,7 @@ int			find_line_end(t_gnl_lst **head, t_gnl_lst *lst, char **line)
 	return (0);
 }
 
-int			read_line(char **line, t_gnl_lst *lst, t_gnl_lst **head)
+int	read_line(char **line, t_gnl_lst *lst, t_gnl_lst **head)
 {
 	ssize_t		size;
 	size_t		slen;
@@ -114,7 +115,7 @@ int			read_line(char **line, t_gnl_lst *lst, t_gnl_lst **head)
 	return (cleanup_get_next_line(head, lst, line));
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static t_gnl_lst	*head;
 	t_gnl_lst			*lst;

@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/18 16:46:09 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:20:12 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 14:59:44 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+int					ft_ternary_int(int condition, int a, int b);
+
+char				*ft_ternary_charp(int condition, char *a, char *b);
 
 t_list				*ft_lstnew(void *content);
 

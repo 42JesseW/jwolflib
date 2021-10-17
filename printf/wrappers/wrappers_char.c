@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/30 17:14:14 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:50:21 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 15:14:48 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 
-char		*wrapper_conversion_c(va_list args)
+char	*wrapper_conversion_c(va_list args)
 {
 	char	*str;
 
@@ -23,17 +23,17 @@ char		*wrapper_conversion_c(va_list args)
 	return (str);
 }
 
-char		*wrapper_conversion_s(va_list args)
+char	*wrapper_conversion_s(va_list args)
 {
 	char	*str;
 
-	str = va_arg(args, char*);
+	str = va_arg(args, char *);
 	if (!str)
 		str = pf_ft_strdup("(null)");
 	return (str);
 }
 
-char		*wrapper_conversion_perc(va_list args)
+char	*wrapper_conversion_perc(va_list args)
 {
 	char	*str;
 

@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 12:31:20 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 15:59:15 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:22:04 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static int	write_width_d(t_core *core, char *str)
 	int		strlen;
 	int		len;
 
-	strlen = (*str == '-') ? (int)pf_ft_strlen(str) - 1 : (int)pf_ft_strlen(str);
+	strlen = ft_ternary_int(*str == '-', (int)pf_ft_strlen(str) - 1,
+			(int)pf_ft_strlen(str));
 	width = lstget_flag(core->head, 'w');
 	if (!has_width(core, str, strlen))
 		return (1);
@@ -89,11 +90,12 @@ static int	write_spec_d(t_core *core, char *str)
 	int		len;
 
 	precision = lstget_flag(core->head, '.');
-	strlen = (*str == '-') ? (int)pf_ft_strlen(str) - 1 : (int)pf_ft_strlen(str);
+	strlen = ft_ternary_int(*str == '-', (int)pf_ft_strlen(str) - 1,
+			(int)pf_ft_strlen(str));
 	if (precision && precision->param > strlen)
 	{
-		len = precision->param - ((*str == '-')
-			? pf_ft_strlen(str) - 1 : pf_ft_strlen(str));
+		len = precision->param - ft_ternary_int(*str == '-',
+				pf_ft_strlen(str) - 1, pf_ft_strlen(str));
 		core->string_len += len;
 		while (len)
 		{
@@ -103,7 +105,7 @@ static int	write_spec_d(t_core *core, char *str)
 	}
 	if (!(is_zero_edge(core, str)))
 	{
-		pf_ft_putstr_fd(((*str == '-') ? str + 1 : str), core->fd);
+		pf_ft_putstr_fd(ft_ternary_charp(*str == '-', str + 1, str), core->fd);
 		core->string_len += strlen;
 	}
 	return (1);
@@ -118,7 +120,7 @@ static int	write_spec_d(t_core *core, char *str)
 **	@RETURN	{int} length
 */
 
-int			write_format_d(t_core *core, va_list args)
+int	write_format_d(t_core *core, va_list args)
 {
 	int		ret;
 	char	*str;
@@ -128,16 +130,16 @@ int			write_format_d(t_core *core, va_list args)
 		return (-1);
 	if (lstget_flag(core->head, '-'))
 		ret = write_format_disp3((t_dispatch3){
-			&write_prefix_d, &write_spec_d, &write_width_d}, core, str);
+				&write_prefix_d, &write_spec_d, &write_width_d}, core, str);
 	else
 	{
 		if (lstget_flag(core->head, '0') && !lstget_flag(core->head, '.'))
 			ret = write_format_disp3((t_dispatch3){
-				&write_prefix_d, &write_width_d, &write_spec_d}, core, str);
+					&write_prefix_d, &write_width_d, &write_spec_d}, core, str);
 		else
 			ret = write_format_disp3((t_dispatch3){
-				&write_width_d, &write_prefix_d, &write_spec_d}, core, str);
+					&write_width_d, &write_prefix_d, &write_spec_d}, core, str);
 	}
 	free(str);
-	return ((ret != 0) ? core->format_len : -1);
+	return (ft_ternary_int(ret != 0, core->format_len, -1));
 }

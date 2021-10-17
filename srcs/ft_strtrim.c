@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 20:58:15 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:39:46 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:50:34 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ static size_t	find_rtrim(char const *s1, char const *set)
 		}
 		idx--;
 	}
-	return ((idx == 0) ? (s1len - 1) : idx);
+	return (ft_ternary_int(idx == 0, s1len - 1, idx));
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trimmed;
 	size_t	start;

@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/16 10:57:36 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 15:50:59 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:29:10 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 **	@RETURN	{int} param
 */
 
-static int			get_flag_param(const char *format, char type, va_list args)
+static int	get_flag_param(const char *format, char type, va_list args)
 {
 	int	param;
 	int	idx;
 
 	if (type != '.' && type != 'w')
 		return (-1);
-	idx = (type == 'w') ? 0 : 1;
+	idx = ft_ternary_int(type == 'w', 0, 1);
 	if (format[idx] == '*')
 		return (va_arg(args, int));
 	param = 0;
@@ -50,8 +50,8 @@ static int			get_flag_param(const char *format, char type, va_list args)
 **	@RETURN	{t_flag*} flag
 */
 
-t_flag				*build_flag(const char *format, t_core *core
-									, char type, va_list args)
+t_flag	*build_flag(const char *format, t_core *core
+					, char type, va_list args)
 {
 	t_flag	*flag;
 
@@ -134,7 +134,7 @@ static t_spec_func	*build_spec_func_arr(void)
 **	@RETURN	{t_core*} core
 */
 
-t_core				*build_core(int fd)
+t_core	*build_core(int fd)
 {
 	t_core	*core;
 

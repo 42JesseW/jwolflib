@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/17 14:47:10 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:02:05 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:32:15 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <unistd.h>
+
+# include "libft.h"
 
 typedef struct		s_flag
 {
@@ -69,6 +71,8 @@ typedef struct		s_dispatch2
 int			ft_printf(const char *format, ...);
 
 int			ft_dprintf(int fd, const char *format, ...);
+
+int			real_printf(int fd, const char *format, va_list args);
 
 /*
 ** UTILS

@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 10:18:24 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:00:09 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:07:55 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	write_width_p(t_core *core, char *str)
 	int		strlen;
 	int		len;
 
-	strlen = (is_zero_edge(core, str)) ? 0 : (int)pf_ft_strlen(str);
+	strlen = ft_ternary_int(is_zero_edge(core, str), 0, (int)pf_ft_strlen(str));
 	width = lstget_flag(core->head, 'w');
 	if (!width)
 		return (1);
@@ -104,7 +104,7 @@ static int	write_spec_p(t_core *core, char *str)
 **	@RETURN	{int} length
 */
 
-int			write_format_p(t_core *core, va_list args)
+int	write_format_p(t_core *core, va_list args)
 {
 	int		ret;
 	char	*str;
@@ -114,17 +114,17 @@ int			write_format_p(t_core *core, va_list args)
 		return (-1);
 	if (lstget_flag(core->head, '-'))
 		ret = write_format_disp3((t_dispatch3){
-			&write_prefix_p, &write_spec_p, &write_width_p}, core, str);
+				&write_prefix_p, &write_spec_p, &write_width_p}, core, str);
 	else
 	{
 		if (lstget_flag(core->head, '0') && (!lstget_flag(core->head, '.')
-			|| (lstget_flag(core->head, '.') && core->negprec != 0)))
+				|| (lstget_flag(core->head, '.') && core->negprec != 0)))
 			ret = write_format_disp3((t_dispatch3){
-				&write_prefix_p, &write_width_p, &write_spec_p}, core, str);
+					&write_prefix_p, &write_width_p, &write_spec_p}, core, str);
 		else
 			ret = write_format_disp3((t_dispatch3){
-				&write_width_p, &write_prefix_p, &write_spec_p}, core, str);
+					&write_width_p, &write_prefix_p, &write_spec_p}, core, str);
 	}
 	free(str);
-	return ((ret != 0) ? core->format_len : -1);
+	return (ft_ternary_int(ret != 0, core->format_len, -1));
 }

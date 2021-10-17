@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/04/17 10:56:22 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/07 08:39:43 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 14:38:39 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char *found;
+	const char	*found;
 
 	if (c == '\0')
 		return (ft_strchr(s, c));

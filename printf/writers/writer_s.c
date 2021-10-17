@@ -6,7 +6,7 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/22 09:51:46 by jevan-de      #+#    #+#                 */
-/*   Updated: 2021/07/14 16:00:32 by jessevander   ########   odam.nl         */
+/*   Updated: 2021/10/17 15:22:12 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static int	write_width_s(t_core *core, char *str)
 	if (!width)
 		return (0);
 	strlen = (int)pf_ft_strlen(str);
-	chpad = (lstget_flag(core->head, '0')) ? '0' : ' ';
+	chpad = ft_ternary_int(!!lstget_flag(core->head, '0'), '0', ' ');
 	len = width->param;
 	if (lstget_flag(core->head, '.'))
 	{
 		if (lstget_flag(core->head, '.')->param < strlen)
 			strlen = lstget_flag(core->head, '.')->param;
 	}
-	len -= (strlen < len) ? strlen : len;
+	len -= ft_ternary_int(strlen < len, strlen, len);
 	core->string_len += len;
 	while (len)
 	{
@@ -88,7 +88,7 @@ static int	write_spec_s(t_core *core, char *str)
 **	@RETURN	{int} length
 */
 
-int			write_format_s(t_core *core, va_list args)
+int	write_format_s(t_core *core, va_list args)
 {
 	int		ret;
 	char	*str;
@@ -100,17 +100,17 @@ int			write_format_s(t_core *core, va_list args)
 		lstget_flag(core->head, '.')->param = pf_ft_strlen(str);
 	if (lstget_flag(core->head, '-'))
 		ret = write_format_disp2((t_dispatch2){
-			&write_spec_s, &write_width_s}, core, str);
+				&write_spec_s, &write_width_s}, core, str);
 	else
 	{
 		if (lstget_flag(core->head, '0'))
 			ret = write_format_disp2((t_dispatch2){
-				&write_width_s, &write_spec_s}, core, str);
+					&write_width_s, &write_spec_s}, core, str);
 		else
 			ret = write_format_disp2((t_dispatch2){
-				&write_width_s, &write_spec_s}, core, str);
+					&write_width_s, &write_spec_s}, core, str);
 	}
 	if (ft_strcmp(str, "(null)") == 0)
 		free(str);
-	return ((ret != 0) ? core->format_len : -1);
+	return (ft_ternary_int(ret != 0, core->format_len, -1));
 }

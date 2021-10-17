@@ -6,13 +6,13 @@
 /*   By: jevan-de <jevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/02 15:12:54 by jevan-de      #+#    #+#                 */
-/*   Updated: 2020/07/17 14:50:06 by jevan-de      ########   odam.nl         */
+/*   Updated: 2021/10/17 15:22:51 by jevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/printf.h"
 
-void			*pf_ft_calloc(size_t nmemb, size_t size)
+void	*pf_ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*p;
 	void			*ptr;
@@ -32,7 +32,7 @@ void			*pf_ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-size_t			pf_ft_strlen(const char *s)
+size_t	pf_ft_strlen(const char *s)
 {
 	size_t	len;
 
@@ -49,7 +49,7 @@ static size_t	pf_ft_strlcpy(char *dst, const char *src, size_t size)
 
 	if (src == NULL || dst == NULL)
 		return (0);
-	s = (char*)src;
+	s = (char *)src;
 	nleft = size;
 	if (nleft != 0)
 	{
@@ -69,7 +69,7 @@ static size_t	pf_ft_strlcpy(char *dst, const char *src, size_t size)
 	return (s - src);
 }
 
-char			*pf_ft_strchr(const char *s, int c)
+char	*pf_ft_strchr(const char *s, int c)
 {
 	while (*s != (char)c)
 	{
@@ -80,7 +80,7 @@ char			*pf_ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char			*pf_ft_strdup(const char *s)
+char	*pf_ft_strdup(const char *s)
 {
 	char	*dup;
 	size_t	len;
