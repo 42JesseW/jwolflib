@@ -107,41 +107,55 @@ TEST_OBJ =		$(addprefix $(TEST)/bin/, $(TEST_SRC:.c=.o))
 
 UNAME_S =		$(shell uname -s)
 
-ifeq ($(UNAME_S), Darwin)
-	P = 			\x1b[35m
-	B = 			\x1b[34m
-	Y = 			\x1b[33m
-	G = 			\x1b[32m
-	R = 			\x1b[31m
-	W = 			\x1b[0m
-else ifeq ($(UNAME_S), Linux)
-	P = 			\033[35m
-	B = 			\033[34m
-	Y = 			\033[33m
-	G = 			\033[32m
-	R = 			\033[31m
-	W = 			\033[0m
-endif
+P=$(shell tput setaf 5)
+B=$(shell tput setaf 4)
+Y=$(shell tput setaf 3)
+G=$(shell tput setaf 2)
+R=$(shell tput setaf 1)
+W=$(shell tput setaf 7)
+
+U=$(shell tput smul)
+N=$(shell tput sgr0)
+
+define ASCII
 
 
-all: $(NAME)
+          $P██╗     $B██╗$Y██████╗ $G███████╗$R████████╗
+          $P██║     $B██║$Y██╔══██╗$G██╔════╝$R╚══██╔══╝
+          $P██║     $B██║$Y██████╔╝$G█████╗     $R██║
+          $P██║     $B██║$Y██╔══██╗$G██╔══╝     $R██║
+          $P███████╗$B██║$Y██████╔╝$G██║        $R██║
+          $P╚══════╝$B╚═╝$Y╚═════╝ $G╚═╝        $R╚═╝
+              $W-- created by jevan-de --
+
+endef
+export ASCII
+
+all: ascii $(NAME)
+
+ascii:
+	@printf "$$ASCII\n"
 
 $(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
-	@echo "\n$(B)CREATING LIBFT LIBRARY...$(W)"
-	@ar vrcs $@ $^
-	@echo "\n$(G)SUCCESSFULLY CREATED LIBFT!"
+	@printf "[$(G)INFO$(W)]: Building library $(NAME)...\n"
+	@ar rcs $@ $^
+	@printf "[$(G)INFO$(W)]: Finished building library $(NAME)\n"
 
 %.o: %.c
-	@echo "$(Y)Compiling $< to $@..."
-	@$(CC) -c $(CFLAGS) -o $@ $<
+	@if $(CC) -c $(CFLAGS) -o $@ $<; then \
+		printf "[$(G)INFO$(W)]: Successfully created object file %-33.33s\r" $@; \
+	else \
+  		printf "[$(R)ERROR$(W)]: Failed to create object file %-33.33s\n" $@; \
+  		$(CC) -c $(CFLAGS) -o $@ $<; \
+  	fi
 
 clean:
-	@echo "$(R)Cleaning up OBJ files... $(W)"
-	@rm -vf $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(TEST_OBJ)
+	@printf "[$(G)INFO$(W)] Cleaning up OBJ files...\n"
+	@rm -f $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) $(TEST_OBJ)
 
 fclean: clean
-	@echo "$(R)Cleaning up $(NAME)... $(W)"
-	@rm -vf $(NAME) test
+	@printf "[$(G)INFO$(W)]: Cleaning up $(NAME)...\n"
+	@rm -f $(NAME) test
 
 re: fclean all
 

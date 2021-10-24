@@ -1,6 +1,7 @@
 #include <criterion/criterion.h>
 #include <time.h>
 #include <stdlib.h>
+#include <signal.h>
 
 #include "../includes/libft.h"
 
