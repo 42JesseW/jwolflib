@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
+#ifndef PRINTF_H
 
-# define FT_PRINTF_H
+# define PRINTF_H
 
 # define SPECS "dcspiuxX%"
 
@@ -32,16 +32,16 @@
 
 # include "libft.h"
 
-typedef struct		s_flag
+typedef struct s_flag
 {
 	char			type;
 	int				param;
 	struct s_flag	*next;
-}					t_flag;
+}	t_flag;
 
 typedef char		*(*t_spec_func)(va_list);
 
-typedef struct		s_core
+typedef struct s_core
 {
 	int				fd;
 	char			cspec;
@@ -51,22 +51,22 @@ typedef struct		s_core
 	t_flag			*head;
 	t_spec_func		*spec_funcs;
 	int				(**write_funcs)(struct s_core*, va_list);
-}					t_core;
+}	t_core;
 
 typedef int			(*t_write_func)(t_core*, va_list);
 
-typedef struct		s_dispatch3
+typedef struct s_dispatch3
 {
 	int	(*one)(t_core*, char*);
 	int	(*two)(t_core*, char*);
 	int	(*three)(t_core*, char*);
-}					t_dispatch3;
+}	t_dispatch3;
 
-typedef struct		s_dispatch2
+typedef struct s_dispatch2
 {
 	int	(*one)(t_core*, char*);
 	int	(*two)(t_core*, char*);
-}					t_dispatch2;
+}	t_dispatch2;
 
 int			ft_printf(const char *format, ...);
 
@@ -77,8 +77,8 @@ int			real_printf(int fd, const char *format, va_list args);
 /*
 ** UTILS
 */
-t_flag		*build_flag(const char *format, t_core *core
-							, char type, va_list args);
+t_flag		*build_flag(const char *format, t_core *core,
+				char type, va_list args);
 
 t_core		*build_core(int fd);
 

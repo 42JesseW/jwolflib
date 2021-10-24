@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIBFT_H
+#ifndef LIBFT_H
 
-# define FT_LIBFT_H
+# define LIBFT_H
 
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}	t_list;
 
 int					ft_ternary_int(int condition, int a, int b);
 
@@ -46,7 +46,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-												void (*del)(void *));
+						void (*del)(void *));
 
 int					ft_atoi(const char *str);
 
