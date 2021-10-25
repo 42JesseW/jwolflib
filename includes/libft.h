@@ -134,4 +134,6 @@ int					ft_strarrexists(char **arr, char *str);
 
 void				ft_strarrfree(char ***str);
 
+char				*ft_strnjoin(int n, ...);
+
 #endif

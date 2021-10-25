@@ -21,16 +21,36 @@ static char *rand_string(char *str, size_t size)
 	return (str);
 }
 
+Test(strnjoin, combine_multiple)
+{
 /*
-** void	ft_strarrfree(char ***str);
-**
-**	DESCRIPTION:
-**		- A simple function that takes the memory address
-**		  of an array of strings as its argument. It frees
-**		  all char pointers inside of the array until it
-**		  finds a NULL pointer. It then frees the original
-**		  pointer and sets it to NULL.
+	str = ft_strnjoin(5, "one", "-", "two", "-", "three");
+	printf("[5] one-two-three: %s\n", str);
+	free(str);
+	str = ft_strnjoin(0);
+	printf("[0] : %s\n", str);
+	free(str);
+	str = ft_strnjoin(3, "one ", NULL, " two");
+	printf("[3] one NULL two: %s\n", str);
+	free(str);
+	str = ft_strnjoin(3, NULL, "one ", " two");
+	printf("[3] NULL one two: %s\n", str);
+	free(str);
+	str = ft_strnjoin(3, "one ", " two", NULL);
+	printf("[3] one NULL two: %s\n", str);
+	free(str);
 */
+}
+
+Test(strnjoin, combine_zero)
+{
+
+}
+
+Test(strnjoin, combine_multiple_with_null)
+{
+
+}
 
 Test(strarrfree, nullvalue)
 {

@@ -67,6 +67,7 @@ SRC =			ft_atof.c \
 				ft_strcpy.c \
 				ft_strdup.c \
 				ft_strjoin.c \
+				ft_strnjoin.c \
 				ft_strlcat.c \
 				ft_strlcpy.c \
 				ft_strlen.c \
@@ -142,11 +143,11 @@ $(NAME): $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ)
 	@printf "[$(G)INFO$(W)]: Finished building library $(NAME)\n"
 
 %.o: %.c
-	@if $(CC) -c $(CFLAGS) -o $@ $<; then \
+	@if $(CC) -c $(CFLAGS) -I$(HEADER_DIR) -o $@ $<; then \
 		printf "[$(G)INFO$(W)]: Successfully created object file %-33.33s\r" $@; \
 	else \
   		printf "[$(R)ERROR$(W)]: Failed to create object file %-33.33s\n" $@; \
-  		$(CC) -c $(CFLAGS) -o $@ $<; \
+  		$(CC) -c $(CFLAGS) -I$(HEADER_DIR) -o $@ $<; \
   	fi
 
 clean:
@@ -164,7 +165,7 @@ $(TEST)/bin:
 	@mkdir -p $@
 
 $(TEST)/bin/%.o: $(TEST)/%.c
-	@$(CC) $(CFLAGS) $< $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) -o $@ -lcriterion
+	@$(CC) $(CFLAGS) $< $(SRC_OBJ) $(GNL_OBJ) $(PRINTF_OBJ) -I$(HEADER_DIR) -o $@ -lcriterion
 
 test: $(NAME) $(TEST)/bin $(TEST_OBJ)
 	for test in $(TEST_OBJ) ; do ./$$test ; done

@@ -12,6 +12,15 @@
 
 #include "../includes/libft.h"
 
+/*
+**	DESCRIPTION:
+**	- A simple function that takes the memory address
+**	  of an array of strings as its argument. It frees
+**	  all char pointers inside of the array until it
+**	  finds a NULL pointer. It then frees the original
+**	  pointer and sets it to NULL.
+*/
+
 void	ft_strarrfree(char ***str)
 {
 	char	**p;

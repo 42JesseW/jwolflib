@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../includes/libft.h"
+#include <libft.h>
 
 static char	*get_string(const char *s, char **str)
 {
@@ -21,11 +21,6 @@ static char	*get_string(const char *s, char **str)
 		tmp = ft_strjoin(*str, dup);
 		free(dup);
 	}
-	if (!tmp)
-	{
-		free(dup);
-		return (NULL);
-	}
 	free((*str));
 	*str = tmp;
 	return (*str);
@@ -44,14 +39,14 @@ static char	*get_string(const char *s, char **str)
 **	@RETURN	{char*}	str
 */
 
-char	*ft_strnjoin(unsigned int n, ...)
+char	*ft_strnjoin(int n, ...)
 {
 	char	*str;
 	char	*dup;
 	int		idx;
 	va_list	strings;
 
-	if (!n)
+	if (!n || n < 0)
 		return (NULL);
 	idx = 0;
 	str = NULL;
@@ -69,27 +64,4 @@ char	*ft_strnjoin(unsigned int n, ...)
 	}
 	va_end(strings);
 	return (str);
-}
-
-int		main(void)
-{
-	char	*str;
-
-	str = ft_strnjoin(5, "one", "-", "two", "-", "three");
-	printf("[5] one-two-three: %s\n", str);
-	free(str);
-	str = ft_strnjoin(0);
-	printf("[0] : %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, "one ", NULL, " two");
-	printf("[3] one NULL two: %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, NULL, "one ", " two");
-	printf("[3] NULL one two: %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, "one ", " two", NULL);
-	printf("[3] one NULL two: %s\n", str);
-	free(str);
-	system("leaks a.out");
-	return (0);
 }
