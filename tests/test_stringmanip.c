@@ -21,36 +21,47 @@ static char *rand_string(char *str, size_t size)
 	return (str);
 }
 
+/*
+** strnjoin (variadic arguments NOT NORM)
+*/
+
 Test(strnjoin, combine_multiple)
 {
-/*
+	char	*str;
+
 	str = ft_strnjoin(5, "one", "-", "two", "-", "three");
-	printf("[5] one-two-three: %s\n", str);
+	cr_expect(strcmp(str, "one-two-three") == 0, "Pointer str should point to a new string");
 	free(str);
-	str = ft_strnjoin(0);
-	printf("[0] : %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, "one ", NULL, " two");
-	printf("[3] one NULL two: %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, NULL, "one ", " two");
-	printf("[3] NULL one two: %s\n", str);
-	free(str);
-	str = ft_strnjoin(3, "one ", " two", NULL);
-	printf("[3] one NULL two: %s\n", str);
-	free(str);
-*/
 }
 
 Test(strnjoin, combine_zero)
 {
+	char	*str;
 
+	str = ft_strnjoin(0);
+	cr_expect_null(str, "Pointer str should be NULL if n=0");
+	str = ft_strnjoin(0, "one", "two", "three");
+	cr_expect_null(str, "Pointer str should be NULL if n=0");
 }
 
 Test(strnjoin, combine_multiple_with_null)
 {
+	char	*str;
 
+	str = ft_strnjoin(3, "one ", NULL, " two");
+	cr_expect(strcmp(str, "one  two") == 0, "strnjoin should ignore NULL strings");
+	free(str);
+	str = ft_strnjoin(3, NULL, "one ", " two");
+	cr_expect(strcmp(str, "one  two") == 0, "strnjoin should ignore NULL strings");
+	free(str);
+	str = ft_strnjoin(3, "one ", " two", NULL);
+	cr_expect(strcmp(str, "one  two") == 0, "strnjoin should ignore NULL strings");
+	free(str);
 }
+
+/*
+** strarrfree()
+*/
 
 Test(strarrfree, nullvalue)
 {

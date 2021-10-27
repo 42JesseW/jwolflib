@@ -52,47 +52,48 @@ SRC =			ft_atof.c \
 				ft_isdigit.c \
 				ft_isprint.c \
 				ft_itoa.c \
-				ft_memccpy.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_memcpy.c \
-				ft_memmove.c \
-				ft_memset.c \
-				ft_putchar_fd.c \
-				ft_putendl_fd.c \
-				ft_putnbr_fd.c \
-				ft_putstr_fd.c \
+				mem/ft_memccpy.c \
+				mem/ft_memchr.c \
+				mem/ft_memcmp.c \
+				mem/ft_memcpy.c \
+				mem/ft_memmove.c \
+				mem/ft_memset.c \
+				put/ft_putchar_fd.c \
+				put/ft_putendl_fd.c \
+				put/ft_putnbr_fd.c \
+				put/ft_putstr_fd.c \
+				str/ft_strchr.c \
+				str/ft_strcpy.c \
+				str/ft_strdup.c \
+				str/ft_strjoin.c \
+				str/ft_strnjoin.c \
+				str/ft_strlcat.c \
+				str/ft_strlcpy.c \
+				str/ft_strlen.c \
+				str/ft_strmapi.c \
+				str/ft_strncmp.c \
+				str/ft_strncpy.c \
+				str/ft_strnstr.c \
+				str/ft_strrchr.c \
+				str/ft_strtrim.c \
+				str/ft_strarrfree.c \
+                str/ft_strarrexists.c \
 				ft_split.c \
-				ft_strchr.c \
-				ft_strcpy.c \
-				ft_strdup.c \
-				ft_strjoin.c \
-				ft_strnjoin.c \
-				ft_strlcat.c \
-				ft_strlcpy.c \
-				ft_strlen.c \
-				ft_strmapi.c \
-				ft_strncmp.c \
-				ft_strncpy.c \
-				ft_strnstr.c \
-				ft_strrchr.c \
-				ft_strtrim.c \
 				ft_substr.c \
 				ft_tolower.c \
 				ft_toupper.c \
-				ft_lstadd_back.c \
-				ft_lstadd_front.c \
-				ft_lstdelone.c \
-				ft_lstlast.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_lstclear.c \
-				ft_lstiter.c \
-				ft_lstmap.c \
+				lst/ft_lstadd_back.c \
+				lst/ft_lstadd_front.c \
+				lst/ft_lstdelone.c \
+				lst/ft_lstlast.c \
+				lst/ft_lstnew.c \
+				lst/ft_lstsize.c \
+				lst/ft_lstclear.c \
+				lst/ft_lstiter.c \
+				lst/ft_lstmap.c \
 				ft_ternary_int.c \
-				ft_ternary_charp.c \
-				ft_strarrfree.c \
-				ft_strarrexists.c
+				ft_ternary_charp.c
+
 
 PRINTF_OBJ =	$(addprefix $(PRINTF_SRCDIR), $(PRINTF_SRC:.c=.o))
 
